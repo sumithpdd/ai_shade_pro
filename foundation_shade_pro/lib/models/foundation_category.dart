@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'foundation_category.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class FoundationCategory {
   final String id;
   final String name;
@@ -8,8 +13,13 @@ class FoundationCategory {
     required this.name,
     this.products = const [],
   });
+
+  factory FoundationCategory.fromJson(Map<String, dynamic> json) =>
+      _$FoundationCategoryFromJson(json);
+  Map<String, dynamic> toJson() => _$FoundationCategoryToJson(this);
 }
 
+@JsonSerializable()
 class Product {
   final String id;
   final String name;
@@ -32,4 +42,8 @@ class Product {
     required this.categoryId,
     required this.tags,
   });
+
+  factory Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
+  Map<String, dynamic> toJson() => _$ProductToJson(this);
 }

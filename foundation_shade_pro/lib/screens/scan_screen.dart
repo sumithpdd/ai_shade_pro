@@ -101,7 +101,7 @@ class ScanScreen extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(24),
                       child: Image.asset(
-                        'assets/dummy_photo_sumith.png',
+                        'assets/test_users/dummy_photo_sumith.png',
                         fit: BoxFit.cover,
                         width: double.infinity,
                       ),

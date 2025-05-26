@@ -1,7 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/foundation_category.dart';
 import '../models/skin_analysis_result.dart';
-import '../services/vertex_ai_service.dart';
+import '../services/gemini_service.dart';
+import 'dart:typed_data';
+import 'package:flutter/services.dart' show rootBundle;
 
 final categoriesProvider = Provider<List<FoundationCategory>>(
   (ref) => [
@@ -123,6 +125,13 @@ final categoriesProvider = Provider<List<FoundationCategory>>(
 );
 
 final skinAnalysisProvider = FutureProvider<SkinAnalysisResult>((ref) async {
-  final service = VertexAIService();
-  return await service.analyzeSkin();
+  final Uint8List renukaImageBytes = await rootBundle
+      .load('assets/test_users/renuka.jpeg')
+      .then((bd) => bd.buffer.asUint8List());
+  final geminiService = GeminiService();
+  final json = await geminiService.analyzeSkin(renukaImageBytes);
+  if (json == null) {
+    throw Exception('Failed to analyze skin');
+  }
+  return SkinAnalysisResult.fromJson(json);
 });

@@ -152,7 +152,7 @@ class _AnalysisScreenState extends ConsumerState<AnalysisScreen>
                       ClipRRect(
                         borderRadius: BorderRadius.circular(24),
                         child: Image.asset(
-                          'assets/dummy_photo_sumith.png',
+                          'assets/test_users/dummy_photo_sumith.png',
                           fit: BoxFit.cover,
                           width: 110,
                           height: 110,
@@ -237,7 +237,7 @@ class _AnalysisScreenState extends ConsumerState<AnalysisScreen>
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(24),
                             child: Image.asset(
-                              'assets/dummy_photo_sumith.png',
+                              'assets/test_users/dummy_photo_sumith.png',
                               fit: BoxFit.cover,
                               width: 110,
                               height: 110,

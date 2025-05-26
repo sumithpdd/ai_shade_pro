@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'skin_analysis_result.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class SkinAnalysisResult {
   final String bestMatchShade;
   final List<String> alternativeShades;
@@ -12,4 +17,8 @@ class SkinAnalysisResult {
     required this.skinTone,
     required this.analysisImageUrl,
   });
+
+  factory SkinAnalysisResult.fromJson(Map<String, dynamic> json) =>
+      _$SkinAnalysisResultFromJson(json);
+  Map<String, dynamic> toJson() => _$SkinAnalysisResultToJson(this);
 }
