@@ -125,11 +125,11 @@ final categoriesProvider = Provider<List<FoundationCategory>>(
 );
 
 final skinAnalysisProvider = FutureProvider<SkinAnalysisResult>((ref) async {
-  final Uint8List renukaImageBytes = await rootBundle
-      .load('assets/test_users/renuka.jpeg')
+  final Uint8List sumithImageBytes = await rootBundle
+      .load('assets/test_users/dummy_photo_sumith.png')
       .then((bd) => bd.buffer.asUint8List());
   final geminiService = GeminiService();
-  final json = await geminiService.analyzeSkin(renukaImageBytes);
+  final json = await geminiService.analyzeSkin(sumithImageBytes);
   if (json == null) {
     throw Exception('Failed to analyze skin');
   }

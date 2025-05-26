@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../common/skin_type_selector.dart';
+import '../common/skin_goals_selector.dart';
 
 class PromptSection extends StatelessWidget {
   final String? selectedFormula;
@@ -17,6 +19,9 @@ class PromptSection extends StatelessWidget {
   final void Function(String) onSkinTypeSelect;
   final void Function(String) onCoverageSelect;
   final void Function(String) onUndertoneSelect;
+  final List<Map<String, dynamic>>? skinGoals;
+  final List<String>? selectedSkinGoals;
+  final void Function(String)? onToggleSkinGoal;
 
   const PromptSection({
     Key? key,
@@ -36,6 +41,9 @@ class PromptSection extends StatelessWidget {
     required this.onSkinTypeSelect,
     required this.onCoverageSelect,
     required this.onUndertoneSelect,
+    this.skinGoals,
+    this.selectedSkinGoals,
+    this.onToggleSkinGoal,
   }) : super(key: key);
 
   @override
@@ -71,12 +79,23 @@ class PromptSection extends StatelessWidget {
           icon: Icons.color_lens,
         ),
         const SizedBox(height: 16),
-        _promptSection(
-          'What is your skin type?',
-          skinTypes,
-          selectedSkinType,
-          onSkinTypeSelect,
-          icon: Icons.face_retouching_natural,
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'How would you describe your skin type?',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Georgia',
+              color: Color(0xFF7B1FA2),
+            ),
+          ),
+        ),
+        const SizedBox(height: 8),
+        SkinTypeSelector(
+          skinTypes: skinTypes,
+          selectedSkinType: selectedSkinType,
+          onSelect: onSkinTypeSelect,
         ),
         const SizedBox(height: 16),
         _promptSection(
@@ -100,6 +119,30 @@ class PromptSection extends StatelessWidget {
           ),
           maxLines: 2,
         ),
+        if (skinGoals != null &&
+            selectedSkinGoals != null &&
+            onToggleSkinGoal != null) ...[
+          const SizedBox(height: 16),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'What are your top skin goals?',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Georgia',
+                color: Color(0xFF7B1FA2),
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          SkinGoalsSelector(
+            skinGoals: skinGoals!,
+            selectedGoals: selectedSkinGoals!,
+            onToggleGoal: onToggleSkinGoal!,
+          ),
+          const SizedBox(height: 16),
+        ],
       ],
     );
   }

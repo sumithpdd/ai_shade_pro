@@ -16,6 +16,7 @@ SkinAnalysisResult _$SkinAnalysisResultFromJson(Map<String, dynamic> json) =>
       undertone: json['undertone'] as String,
       skinTone: json['skinTone'] as String,
       analysisImageUrl: json['analysisImageUrl'] as String,
+      shadeDepth: json['shadeDepth'] as String,
     );
 
 Map<String, dynamic> _$SkinAnalysisResultToJson(SkinAnalysisResult instance) =>
@@ -25,4 +26,5 @@ Map<String, dynamic> _$SkinAnalysisResultToJson(SkinAnalysisResult instance) =>
       'undertone': instance.undertone,
       'skinTone': instance.skinTone,
       'analysisImageUrl': instance.analysisImageUrl,
+      'shadeDepth': instance.shadeDepth,
     };

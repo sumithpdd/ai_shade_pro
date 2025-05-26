@@ -9,6 +9,7 @@ class SkinAnalysisResult {
   final String undertone; // e.g., 'Warm', 'Cool', 'Neutral'
   final String skinTone; // e.g., 'Medium', 'Deep', 'Fair'
   final String analysisImageUrl;
+  final String shadeDepth; // e.g., 'RICH', 'DEEP', etc.
 
   SkinAnalysisResult({
     required this.bestMatchShade,
@@ -16,6 +17,7 @@ class SkinAnalysisResult {
     required this.undertone,
     required this.skinTone,
     required this.analysisImageUrl,
+    required this.shadeDepth,
   });
 
   factory SkinAnalysisResult.fromJson(Map<String, dynamic> json) =>
